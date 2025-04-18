@@ -3,7 +3,7 @@ from typing import List, Any, Dict
 from rich.table import Table
 from rich.console import Console
 
-from course import Course
+from .course import Course
 
 
 class CourseDataLoader:
