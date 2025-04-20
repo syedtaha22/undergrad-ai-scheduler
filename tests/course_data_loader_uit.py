@@ -6,7 +6,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from data_models.course_data_loader import CourseDataLoader
 
 
-file = "config/courses.json"
+file = "configs/courses.json"
 
 loader = CourseDataLoader(file)
 

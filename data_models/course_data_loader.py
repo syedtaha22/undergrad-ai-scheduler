@@ -73,7 +73,10 @@ class CourseDataLoader:
             for field, field_type in self.REQUIRED_FIELDS.items():
                 if field not in item:
                     raise KeyError(f"Missing required field '{field}' in item at index {idx}")
-                value = item[field]
+                
+                value = item[field].strip() if isinstance(item[field], str) else item[field]
+
+                #value = item[field]
                 if not isinstance(value, field_type):
                     try:
                         value = field_type(value)  # type: ignore
@@ -107,7 +110,9 @@ class CourseDataLoader:
         }
 
         for c in courses:
-            schedule[c.time][c.day.strip()].append(c.name)
+            entry =f"{c.name} - {c.instructor} - {c.id}"
+            schedule[c.time][c.day.strip()].append(entry)
+            #schedule[c.time][c.day.strip()].append(c.name)
 
         table: Table = Table(show_lines=True)
         table.add_column("Time")
